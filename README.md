@@ -1,12 +1,12 @@
 # Proyecto-Hermanos-Jota 
 
-#Integrantes:
+# Integrantes:
 - Agustina Ailen Resquin
 - Leandro Calviño
 - Noelia Agustina Brandan
 - Gonzalo Quintana
 - Franco Baranovich
 
-#Funcionalidades Implementadas
+# Funcionalidades Implementadas
 
-#Tecnologías Utilizadas
+# Tecnologías Utilizadas
