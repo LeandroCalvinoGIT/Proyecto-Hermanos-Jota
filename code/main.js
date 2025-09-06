@@ -3,3 +3,5 @@
 - El catálogo de productos debe renderizarse dinámicamente manipulando el DOM.
 - Se debe simular una carga asíncrona para los productos (setTimeout con Promises o async await).
 - Toda la interactividad debe manejarse con addEventListener. */
+
+
