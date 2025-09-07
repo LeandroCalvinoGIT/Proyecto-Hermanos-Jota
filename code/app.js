@@ -161,22 +161,17 @@ const catalogoProductos = document.querySelector("#catalogo-productos");
 const contenedorProductosDestacados = document.querySelector("#productos-destacados");
 
 function crearTarjetaDeProducto(producto, contenedor) {
+    const index = productos.indexOf(producto);
+    const esDestacado = contenedor === contenedorProductosDestacados;
     const link = document.createElement("a");
-    link.href = `producto.html?id=${productos.indexOf(producto)}`;
+    link.href = esDestacado ? `./html/producto.html?id=${index}` : `producto.html?id=${index}`;
 
     const card = document.createElement("div");
     card.classList.add("producto-card");
 
     const imagen = document.createElement("img");
     imagen.alt = producto.nombre;
-
-    if (contenedor !== contenedorProductosDestacados) {
-        imagen.src = producto.imagen;
-    }
-    else {
-        imagen.src = producto.imagen.replace("../", "./");
-        link.href = `./html/producto.html?id=${productos.indexOf(producto)}`;
-    }
+    imagen.src = esDestacado ? producto.imagen.replace("../", "./") : producto.imagen
 
     const titulo = document.createElement("h3");
     titulo.textContent = producto.nombre;
@@ -255,4 +250,17 @@ document.addEventListener("DOMContentLoaded", () => {
             );
         }
     });
+
+    const contador = document.getElementById("contador-carrito");
+
+    // Carga desde localStorage
+    let cantidad = localStorage.getItem("carritoCantidad") || 0;
+    contador.textContent = cantidad;
+
+    // Función global para usar en otros archivos
+    window.agregarAlCarrito = function () {
+        cantidad++;
+        localStorage.setItem("carritoCantidad", cantidad);
+        contador.textContent = cantidad;
+    };
 });

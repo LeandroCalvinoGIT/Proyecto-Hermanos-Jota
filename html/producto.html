@@ -17,14 +17,38 @@
 <body>
     <header>
         <a href="../index.html"><img src="../img/logo.svg" alt="Logo de la empresa"></a>
+        <nav>
+            <a href="../index.html">Inicio</a>
+            <a href="./productos.html">Catálogo</a>
+            <a href="#footer">Medios de Contacto</a>
+            <a href="./contacto.html">Consultas</a>
+            <div id="carrito">
+                🛒 <span id="contador-carrito">0</span>
+            </div>
+        </nav>
     </header>
     <main id="detalle-producto">
         <!-- Acá se carga el contenido del producto -->
     </main>
 
-    <button id="btn-carrito">🛒Añadir al Carrito</button>
+    <button onclick="agregarAlCarrito()" id="btn-carrito">🛒Añadir al Carrito</button>
 
+    <footer id="footer">
+        <!-- LINKS CONTACTO: -->
+        <p>Instagram: <a
+                href="https://alt-5a31a0302d72d.blackboard.com/bbcswebdav/pid-982156-dt-content-rid-14612411_1/courses/FSD.00-43441/Instagram%20copy/index.html?one_hash=A31A00BDF54A53F0A2DB923974749C2E&f_hash=CC9E9E3D194900C1FA12077901117B48"
+                target="_blank" rel="noopener noreferrer">@hermanosjota_ba</a></p>
 
+        <p>mail general: <a href="mailto:info@hermanosjota.com.ar">info@hermanosjota.com.ar</a></p>
+
+        <p> Ventas: <a href="mailto:ventas@hermanosjota.com.ar">ventas@hermanosjota.com.ar</a></p>
+
+        <p> WhatsApp: <a href="https://wa.me/541145678900" target="_blank">+54 11 4567-8900</a></p>
+
+        <!-- COPYRIGHT -->
+        <p>© 2025 Hermanos Jota. Todos los derechos reservados.</p>
+
+    </footer>
     <script src="../code/app.js"></script>
     <script src="../code/detalle-producto.js"></script>
 </body>
