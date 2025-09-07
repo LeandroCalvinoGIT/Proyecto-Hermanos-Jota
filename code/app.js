@@ -154,13 +154,16 @@ const productos = [
 const productosDestacados = productos.slice(0, 3);
 
 // ===============================
-// 3. FUNCIONES PARA RENDERIZAR
+// 3. FUNCIONES PARA CREAR PRODUCTOS
 // ===============================
 
-const contenedorProductos = document.querySelector("#contenedor-productos");
+const catalogoProductos = document.querySelector("#catalogo-productos");
 const contenedorProductosDestacados = document.querySelector("#productos-destacados");
 
-function renderizarProducto(producto, contenedor) {
+function crearTarjetaDeProducto(producto, contenedor) {
+    const link = document.createElement("a");
+    link.href = `producto.html?id=${productos.indexOf(producto)}`;
+
     const card = document.createElement("div");
     card.classList.add("producto-card");
 
@@ -186,7 +189,8 @@ function renderizarProducto(producto, contenedor) {
     card.appendChild(descripcion);
     card.appendChild(lista);
 
-    contenedor.appendChild(card);
+    link.appendChild(card);
+    contenedor.appendChild(link);
 }
 
 // ===================================
@@ -203,14 +207,14 @@ function obtenerListaAsync(lista) {
 async function cargarProductos() {
     try {
         const destacados = await obtenerListaAsync(productosDestacados);
-        destacados.forEach(producto => renderizarProducto(producto, contenedorProductosDestacados));
+        destacados.forEach(producto => crearTarjetaDeProducto(producto, contenedorProductosDestacados));
     } catch (error) {
         console.error("Error al cargar productos destacados:", error);
     }
 
     try {
         const catalogo = await obtenerListaAsync(productos);
-        catalogo.forEach(producto => renderizarProducto(producto, contenedorProductos));
+        catalogo.forEach(producto => crearTarjetaDeProducto(producto, catalogoProductos));
     } catch (error) {
         console.error("Error al cargar catálogo completo:", error);
     }
@@ -221,4 +225,27 @@ async function cargarProductos() {
 // ===================================
 document.addEventListener("DOMContentLoaded", () => {
     cargarProductos();
+
+    const inputBusqueda = document.getElementById("input-busqueda");
+    const mensajeVacio = document.getElementById("mensaje-vacio");
+
+    inputBusqueda.addEventListener("input", () => {
+        const texto = inputBusqueda.value.toLowerCase();
+
+        const productosFiltrados = productos.filter(producto =>
+            producto.nombre.toLowerCase().includes(texto) ||
+            producto.descripcion.toLowerCase().includes(texto)
+        );
+
+        catalogoProductos.innerHTML = "";
+
+        if (productosFiltrados.length === 0) {
+            mensajeVacio.style.display = "block";
+        } else {
+            mensajeVacio.style.display = "none";
+            productosFiltrados.forEach(producto =>
+                crearTarjetaDeProducto(producto, catalogoProductos)
+            );
+        }
+    });
 });
