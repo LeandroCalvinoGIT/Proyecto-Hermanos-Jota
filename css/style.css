@@ -235,6 +235,14 @@ section h2 {
     font-weight: 600;
 }
 
+#contenedor-productos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--espaciado-lg);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
 /* FOOTER */
 footer {
     background-color: var(--siena-tostado);
