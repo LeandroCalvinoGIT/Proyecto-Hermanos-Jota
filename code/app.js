@@ -77,7 +77,7 @@ const productos = [
     {
         nombre: "Cama Neuquén",
         descripcion: "Cama plataforma con cabecero flotante tapizado en lino natural. Su diseño minimalista y sofisticado crea un ambiente de serenidad y elegancia.",
-        imagen: "../img/logo.svg.png",
+        imagen: "../img/logo.svg",
         detalles: {
             medidas: "160 × 200 × 90 cm",
             materiales: "Roble macizo FSC®, tapizado lino",
@@ -168,8 +168,15 @@ function crearTarjetaDeProducto(producto, contenedor) {
     card.classList.add("producto-card");
 
     const imagen = document.createElement("img");
-    imagen.src = producto.imagen;
     imagen.alt = producto.nombre;
+
+    if (contenedor !== contenedorProductosDestacados) {
+        imagen.src = producto.imagen;
+    }
+    else {
+        imagen.src = producto.imagen.replace("../", "./");
+        link.href = `./html/producto.html?id=${productos.indexOf(producto)}`;
+    }
 
     const titulo = document.createElement("h3");
     titulo.textContent = producto.nombre;
