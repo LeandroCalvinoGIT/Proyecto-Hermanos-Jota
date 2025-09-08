@@ -8,15 +8,19 @@ const contenedor = document.getElementById("detalle-producto");
 
 if (producto) {
     const html = `
-        <h1>${producto.nombre}</h1>
-        <img src="${producto.imagen}" alt="${producto.nombre}" />
-        <p>${producto.descripcion}</p>
-        <ul>
-            ${Object.entries(producto.detalles).map(
-        ([clave, valor]) => `<li><strong>${clave}:</strong> ${valor}</li>`
-    ).join("")}
-        </ul>
-    `;
+        <div class="detalle-contenedor">
+            <img src="${producto.imagen}" alt="${producto.nombre}" />
+            <div class="detalle-info">
+                <h1>${producto.nombre}</h1>
+                <p>${producto.descripcion}</p>
+                <ul>
+                    ${Object.entries(producto.detalles).map(
+                        ([clave, valor]) => `<li><strong>${clave}:</strong> ${valor}</li>`
+                    ).join("")}
+                </ul>
+            </div>
+        </div>
+`;
     contenedor.innerHTML = html;
 } else {
     contenedor.innerHTML = "<p>Producto no encontrado.</p>";
