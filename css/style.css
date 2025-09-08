@@ -257,8 +257,10 @@ section h2 {
 /* DETALLE DE PRODUCTO */
 .detalle-contenedor {
     display: flex;
-    align-items: flex-start; /* Alinea arriba */
-    gap: 2rem; /* Espacio entre imagen y texto */
+    align-items: flex-start;
+    /* Alinea arriba */
+    gap: 2rem;
+    /* Espacio entre imagen y texto */
     max-width: 1200px;
     margin: 2rem auto;
     padding: 1rem;
@@ -268,7 +270,7 @@ section h2 {
     width: 400px;
     height: auto;
     border-radius: var(--border-radius-lg);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
 }
 
 .detalle-info {
@@ -359,7 +361,7 @@ footer a:hover {
     }
 }
 
-    /* FORMULARIO */
+/* FORMULARIO */
 .form-container {
     display: flex;
     justify-content: center;
@@ -370,7 +372,7 @@ footer a:hover {
 
 #form-contacto {
     width: 100%;
-    max-width: 500px;            
+    max-width: 500px;
     background-color: #e2b7a5;
     border-radius: 2rem;
     padding: 2rem;
@@ -397,7 +399,7 @@ footer a:hover {
 
 #form-contacto textarea {
     min-height: 120px;
-    resize: none;  
+    resize: none;
     border-radius: 1rem;
 }
 
@@ -430,14 +432,15 @@ footer a:hover {
     }
 
     .detalle-contenedor {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
     }
+
     .detalle-contenedor img {
         width: 100%;
         max-width: 350px;
-        }
+    }
 
 
 
@@ -514,4 +517,27 @@ footer a:hover {
 
 .mb-5 {
     margin-bottom: var(--espaciado-xl);
+}
+
+/* Botón "Agregar al Carrito" */
+#btn-carrito {
+    display: block;
+    margin: 30px auto;
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#btn-carrito:hover {
+    background-color: #555;
+    transform: scale(1.05);
+}
+
+#btn-carrito:active {
+    transform: scale(0.98);
 }

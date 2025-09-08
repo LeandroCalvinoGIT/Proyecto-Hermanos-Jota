@@ -154,8 +154,9 @@ const productos = [
 const productosDestacados = productos.slice(0, 3);
 
 // ===============================
-// 3. FUNCIONES PARA CREAR PRODUCTOS
+// 3. FUNCIONES 
 // ===============================
+
 
 const catalogoProductos = document.querySelector("#catalogo-productos");
 const contenedorProductosDestacados = document.querySelector("#productos-destacados");
@@ -195,6 +196,51 @@ function crearTarjetaDeProducto(producto, contenedor) {
     contenedor.appendChild(link);
 }
 
+// Actualiza el contador del carrito
+function actualizarContadorCarrito() {
+    const contador = localStorage.getItem("cartCount") || "0";
+    const cartCountElements = document.querySelectorAll("#cart-count");
+    cartCountElements.forEach(el => el.textContent = contador);
+}
+
+// Suma 1 al carrito
+function agregarAlCarrito() {
+    let contador = parseInt(localStorage.getItem("cartCount") || "0", 10);
+    contador++;
+    localStorage.setItem("cartCount", contador);
+    actualizarContadorCarrito();
+    mostrarMensaje("Producto agregado al carrito");
+}
+
+function mostrarMensaje(texto) {
+    const mensaje = document.createElement("div");
+    mensaje.textContent = texto;
+    mensaje.style.position = "fixed";
+    mensaje.style.bottom = "20px";
+    mensaje.style.right = "20px";
+    mensaje.style.backgroundColor = "#4CAF50";
+    mensaje.style.color = "white";
+    mensaje.style.padding = "12px 20px";
+    mensaje.style.borderRadius = "6px";
+    mensaje.style.boxShadow = "0 2px 8px rgba(0, 0, 0, 0.2)";
+    mensaje.style.zIndex = "1000";
+    mensaje.style.opacity = "0";
+    mensaje.style.transition = "opacity 0.3s ease";
+
+    document.body.appendChild(mensaje);
+
+    // Fade in
+    setTimeout(() => mensaje.style.opacity = "1", 10);
+
+    // Desaparece a los 3 segundos
+    setTimeout(() => {
+        mensaje.style.opacity = "0";
+
+        setTimeout(() => mensaje.remove(), 300);
+    }, 3000);
+}
+
+
 // ===================================
 // 4. CARGA ASÍNCRONA DE PRODUCTOS
 // ===================================
@@ -226,8 +272,11 @@ async function cargarProductos() {
 // 5. INICIALIZACIÓN AL CARGAR PÁGINA
 // ===================================
 document.addEventListener("DOMContentLoaded", () => {
-    cargarProductos();
 
+    cargarProductos();
+    actualizarContadorCarrito();
+
+    // BUSCADOR EN CATALOGO
     const inputBusqueda = document.getElementById("input-busqueda");
     const mensajeVacio = document.getElementById("mensaje-vacio");
 
@@ -251,16 +300,9 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    const contador = document.getElementById("contador-carrito");
-
-    // Carga desde localStorage
-    let cantidad = localStorage.getItem("carritoCantidad") || 0;
-    contador.textContent = cantidad;
-
-    // Función global para usar en otros archivos
-    window.agregarAlCarrito = function () {
-        cantidad++;
-        localStorage.setItem("carritoCantidad", cantidad);
-        contador.textContent = cantidad;
-    };
+    //CARRITO
+    const addToCartButtons = document.querySelectorAll(".add-to-cart");
+    addToCartButtons.forEach(button => {
+        button.addEventListener("click", agregarAlCarrito);
+    });
 });

@@ -1,3 +1,5 @@
+
+
 // Leer el ID de la URL
 const params = new URLSearchParams(window.location.search);
 const id = parseInt(params.get("id"));
@@ -15,9 +17,10 @@ if (producto) {
                 <p>${producto.descripcion}</p>
                 <ul>
                     ${Object.entries(producto.detalles).map(
-                        ([clave, valor]) => `<li><strong>${clave}:</strong> ${valor}</li>`
-                    ).join("")}
+        ([clave, valor]) => `<li><strong>${clave}:</strong> ${valor}</li>`
+    ).join("")}
                 </ul>
+                <button id="btn-carrito" class="add-to-cart">🛒Agregar al carrito</button>
             </div>
         </div>
 `;
@@ -25,3 +28,13 @@ if (producto) {
 } else {
     contenedor.innerHTML = "<p>Producto no encontrado.</p>";
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    const botonAgregar = document.getElementById("btn-carrito");
+
+    if (botonAgregar) {
+        botonAgregar.addEventListener("click", () => {
+            agregarAlCarrito();
+        });
+    }
+});
