@@ -28,9 +28,13 @@ Diseño Responsivo: Adaptable a móviles, tablets y desktop.
 # Tecnologías Utilizadas
 🛠️ Tecnologías Utilizadas
 --Frontend
-HTML5 - Estructura semántica y accesible
-CSS3 - Estilos modernos con variables CSS y diseño responsivo
-JavaScript - Funcionalidad dinámica y carga asíncrona
-Herramientas de Desarrollo
-Git - Control de versiones
-VS Code - Editor de código
+HTML5 - Estructura semántica y accesible.
+
+CSS3 - Estilos modernos con variables CSS y diseño responsivo.
+
+JavaScript - Funcionalidad dinámica y carga asíncrona.
+
+Herramientas de Desarrollo:
+
+Git - Control de versiones.
+VS Code - Editor de código.
