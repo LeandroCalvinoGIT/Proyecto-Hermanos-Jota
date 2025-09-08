@@ -21,7 +21,6 @@
         <nav>
             <a href="../index.html">Inicio</a>
             <a href="./productos.html">Catálogo</a>
-            <a href="./nosotros.html">Nuestra Historia</a>
             <a href="#footer">Medios de Contacto</a>
             <a href="./contacto.html">Consultas</a>
             <div class="carrito">
@@ -47,9 +46,16 @@
             </form>
         </section>
 
-        <p id="mensaje-exito" style="display: none; color: green;">
-            ¡Gracias por contactarte! Te responderemos pronto.
-        </p>
+        <div id="mensaje-exito" class="mensaje mensaje-exito" style="display:none;">
+            <span class="icono">✅</span>
+            <span class="texto">¡Gracias por contactarte! Te responderemos pronto.</span>
+        </div>
+
+        <div id="mensaje-error" class="mensaje mensaje-error" style="display:none;">
+            <span class="icono">❌</span>
+            <span class="texto"></span>
+        </div>
+
     </main>
 
     <footer id="footer">
@@ -68,6 +74,7 @@
         <p>© 2025 Hermanos Jota. Todos los derechos reservados.</p>
 
     </footer>
+    <script src="../code/contacto.js"></script>
     <script src="../code/app.js"></script>
 </body>
 
